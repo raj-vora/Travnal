@@ -1,0 +1,11 @@
+{
+  "name": "travnal",
+  "version": "0.0.1",
+  "description": "A web app which could act as a travelers journal to store his memories and share it with other",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raj Vora, Aniket Patil",
+  "license": "ISC"
+}
