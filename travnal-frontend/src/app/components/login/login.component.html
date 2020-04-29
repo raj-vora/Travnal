@@ -1,0 +1,47 @@
+<div class="brand row">
+    <h1>Travnal<img class="logo-image" src="/assets/paper-plane.png"></h1>
+</div>
+  <div class="row">
+    <div class="container">
+        <div class="col-md-1"></div>            
+        <div class="col-md-4 login signin">
+            <div class="row">
+                <h2 class="signin-text">Log In</h2>
+            </div>
+            <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+                <h3>Username</h3>
+                <input name="username" type="text" class="form-control" placeholder="JohnDoe" ngModel [style.width.%]="100">
+                <br>
+                <h3>Password</h3>
+                <input name="password" type="password" class="form-control" placeholder="Password" ngModel minlength="8" [style.width.%]="100">
+                <br><br>
+                <button type="submit" class="btn btn-primary signup">Login</button>
+                <br><br>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4 login">
+            <div class="row">
+                <h2 class="signin-text">Sign Up</h2>
+            </div>
+            <form #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)">
+                <h3>Username</h3>
+                <input type="text" name="username" class="form-control" placeholder="JohnDoe" ngModel [style.width.%]="100">
+                <br>
+                <h3>Email</h3>
+                <input type="email" name="email" class="form-control" placeholder="johndoe368@gmail.com" ngModel [style.width.%]="100">
+                <br>
+                <h3>Password</h3>
+                <input type="password" name="password" class="form-control" placeholder="password" ngModel [style.width.%]="100">
+                <br>
+                <h3>Confirm Password</h3>
+                <input type="password" name="cpassword" class="form-control" placeholder="password" ngModel [style.width.%]="100">
+                <br><br>
+                <button type="submit" class="btn btn-primary signup">Sign Up</button>
+                <br><br>
+            </form>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+<app-footer></app-footer>

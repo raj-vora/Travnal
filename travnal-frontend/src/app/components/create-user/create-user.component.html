@@ -1,0 +1,47 @@
+<div class="brand row">
+    <h1>Travnal<img class="logo-image" src="/assets/paper-plane.png"></h1>
+</div>
+<div class="container">        
+<div class="col-md-4"></div>
+<div class="col-md-4 setprofile login">
+    <div class="row">
+        <h2 class="signin-text">Create Profile</h2>
+    </div>
+    <form #createForm="ngForm" (ngSubmit)="create(createForm.value)">
+        <h4>Name</h4>
+        <input type="text" name="name" class="form-control" placeholder="JohnDoe" ngModel [style.width.%]="100">
+        <br>
+        <h4>Username</h4>
+        <input type="text" name="user" class="form-control"  value={{username}} ngModel readonly>
+        <br>
+        <h4>Website/Blog</h4>
+        <input type="text" name="website" class="form-control" placeholder="rj.blogspot.in" ngModel>
+        <br>
+        <h4>Bio</h4>
+        <input type="text" name="bio" class="form-control" placeholder="Write something interesting about you" ngModel>
+        <br>
+        <h4>City</h4>
+        <input type="text" name="home_city" class="form-control" ngModel>
+        <br>
+        <h4>Phone Number</h4>
+        <input type="text" name="phone" class="form-control" placeholder="9619073040" ngModel>
+        <br>
+        <h4>Gender</h4>
+        <select class="gender" ngModel>
+            <option value="male" ngModel>Male</option>
+            <option value="female" ngModel>Female</option>
+            <option value="other" ngModel>Other</option>
+        </select>
+        <br>
+        <h4>Birthdate</h4>
+        <input type="date" name="birthday" class="date" ngModel>
+        <br>
+        <button type="submit" class="btn btn-primary signup">Create</button>
+        <br>
+    </form>
+    <button onClick="backAway()" class="btn btn-primary">Cancel</button>
+</div>
+    <div class="col-md-4"></div>
+</div>    
+<br>
+<app-footer></app-footer>
