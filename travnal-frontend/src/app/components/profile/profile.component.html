@@ -3,28 +3,35 @@
         <section class="profile">
             <header class="header">
                 <div class="details">
-                    <img src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=b38c22a46932485790a3f52c61fcbe5a" alt="John Doe" class="profile-pic">
+                    <img src={{profileimage}} alt="John Doe" class="profile-pic">
                     <h1 class="heading">Claire Doe</h1>
                     <div class="location">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12 ,2Z"></path>
                         </svg>
-                        <p>Kochi, India</p>
+                        <p>{{ location }}</p>
                     </div>
                     <div class="stats">
                         <div class="col-4">
-                            <h4>20</h4>
-                            <p>Reviews</p>
+                            <h4>{{noposts}}</h4>
+                            <p>Posts</p>
                         </div>
                         <div class="col-4">
-                            <h4>10</h4>
-                            <p>Communities</p>
+                            <h4>{{nofollowers}}</h4>
+                            <p>Followers</p>
                         </div>
                         <div class="col-4">
-                            <h4>100</h4>
-                            <p>Discussions</p>
+                            <h4>{{nofollowing}}</h4>
+                            <p>Following</p>
                         </div>
                     </div>
+                    <br><br>
+                    <!--<% if(show==0){ %>
+                        <a href="/follow/<%= name %>"><button class="btn btn-primary"> Follow Me </button></a> if and add this to db
+                    <% } %>
+                    <% if(show==1){ %>
+                        <a href="/new-trip"><button class="btn btn-primary"> Create Trip </button></a> if and add this to db
+                    <% } %>-->
                 </div>
             </header>
         </section>
@@ -35,6 +42,21 @@
     <div class="col-md-8" id="profile-feed-sec">
     <section class="section">
         <div class="grid">
+            <!--<% if(posts.length>0) {%>
+                <% for(var i=0; i<posts.length; i++) {%>
+                        <div class="item <%= posts[i].class%>">
+                            <a href="/trip/<%= name %>/<%= posts[i].idt %>">
+                            <div class="item__details">  
+                            <b> <%= posts[i].tripname %> </b>
+                            <br>
+                            <%= posts[i].decription %>
+                            </div>
+                            </a>
+                        </div>
+                <% } %>
+            <% } else{ %>
+                <h3>No posts yet!</h3>
+            <% } %>-->
             <div class="item">
             <div class="item__details">
                 jelly-o brownie sweet

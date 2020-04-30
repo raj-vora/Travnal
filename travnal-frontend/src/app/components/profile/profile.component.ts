@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  profileimage:string="../../../assets/profile-images/janedoe.jpg"
+  location:string="Mumbai, India"
+  noposts:number=10
+  nofollowers:number=2
+  nofollowing:number=1
+
   constructor() { }
 
   ngOnInit(): void {

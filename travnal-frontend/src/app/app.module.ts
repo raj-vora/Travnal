@@ -10,6 +10,8 @@ import { FeedComponent } from './components/feed/feed.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { NewtripComponent } from './components/newtrip/newtrip.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     FeedComponent,
     ProfileComponent,
     TimelineComponent,
-    NavigationComponent
+    NavigationComponent,
+    LogoutComponent,
+    NewtripComponent
   ],
   imports: [
     BrowserModule,

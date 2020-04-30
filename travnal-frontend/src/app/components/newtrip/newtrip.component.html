@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="row">
+        <h2 class="startup-text">Lets start a new trip {{ name }} ! </h2>
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4 login signin newtrip">
+        <form action="/new-trip" method="POST">
+            <h3>Trip Name</h3>
+            <input name="tripname" type="text" class="form-control" placeholder="Vacation to Goa">
+            <br>
+            <h3>Start Date</h3>
+            <input name="date" type="text" class="form-control" placeholder="16/04/2018">
+            <br><br>
+            <h3>Description</h3>
+            <input name="description" type="text" class="form-control" placeholder="My roadtrip trip to goa with my friends">
+            <br><br>
+            <button type="submit" class="btn btn-primary signup" >Start Trip</button>
+            <br><br>
+        </form>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
