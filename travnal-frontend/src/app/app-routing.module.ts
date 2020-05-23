@@ -7,6 +7,7 @@ import { LogoutComponent } from './components/logout/logout.component'
 import { LoginComponent } from './components/login/login.component'
 import { TimelineComponent } from './components/timeline/timeline.component'
 import { NewtripComponent } from './components/newtrip/newtrip.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component'
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:"timeline", component:TimelineComponent},
   {path:"newtrip", component:NewtripComponent},
   {path:"logout", component:LogoutComponent},
+  {path:"upload", component: FileUploadComponent}
 ];
 
 @NgModule({

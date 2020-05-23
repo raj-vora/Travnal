@@ -12,6 +12,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    email: String,
+    bio: String,
+    website: String,
+    phone: String,
+    name: String,
+    birthdate: String,
+    city: String,
+    followers: Array,
+    following: Array,
+    feeds: Array,
+    posts: Array,
+    profile: String
 })
 
 userSchema.plugin(uniqueValidator)

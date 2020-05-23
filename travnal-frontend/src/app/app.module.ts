@@ -12,6 +12,8 @@ import { TimelineComponent } from './components/timeline/timeline.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { NewtripComponent } from './components/newtrip/newtrip.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -24,12 +26,14 @@ import { NewtripComponent } from './components/newtrip/newtrip.component';
     TimelineComponent,
     NavigationComponent,
     LogoutComponent,
-    NewtripComponent
+    NewtripComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
