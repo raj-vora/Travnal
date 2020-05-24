@@ -7,39 +7,53 @@
     <div class="row">
         <h2 class="signin-text">Create Profile</h2>
     </div>
-    <form #createForm="ngForm" (ngSubmit)="create(createForm.value)">
+    <form #createForm="ngForm" (ngSubmit)="create(createForm.value)" >
+        <div class="form-group">
+
+            <h4><label for="file">Upload Profile Image</label></h4>
+            <input type="file" [accept]="[ '.jpg', '.jpeg', '.png' ]"
+                   id="file"
+                   class="form-control"
+                   (change)="handleFileInput($event.target.files)">
+            <button type="button" class="btn btn-success btn-s" (click)="upload()">Upload</button><br />
+            <img [src]="imgURL" height="200" *ngIf="imgURL">
+            <h3>{{uploaded}}</h3>
+        </div>
+
         <h4>Name</h4>
-        <input type="text" name="name" class="form-control" placeholder="JohnDoe" ngModel [style.width.%]="100">
+        <input type="text" name="name" class="form-control" placeholder="JohnDoe" [ngModel] [style.width.%]="100">
         <br>
         <h4>Username</h4>
-        <input type="text" name="user" class="form-control"  value={{username}} ngModel readonly>
+        <input type="text" name="username" class="form-control"  [ngModel]=username readonly [ngModel]>
         <br>
         <h4>Website/Blog</h4>
-        <input type="text" name="website" class="form-control" placeholder="rj.blogspot.in" ngModel>
+        <input type="text" name="website" class="form-control" placeholder="rj.blogspot.in" [ngModel]>
         <br>
         <h4>Bio</h4>
-        <input type="text" name="bio" class="form-control" placeholder="Write something interesting about you" ngModel>
+        <input type="text" name="bio" class="form-control" placeholder="Write something interesting about you" [ngModel]>
         <br>
         <h4>City</h4>
-        <input type="text" name="home_city" class="form-control" ngModel>
+        <input type="text" name="city" class="form-control" [ngModel]>
         <br>
         <h4>Phone Number</h4>
-        <input type="text" name="phone" class="form-control" placeholder="9619073040" ngModel>
+        <input type="text" name="phone" class="form-control" placeholder="Enter 10 digit mobile number" [ngModel]>
         <br>
         <h4>Gender</h4>
-        <select class="gender" ngModel>
-            <option value="male" ngModel>Male</option>
-            <option value="female" ngModel>Female</option>
-            <option value="other" ngModel>Other</option>
+        <select class="gender" [ngModel]>
+            <option value="male" [ngModel]>Male</option>
+            <option value="female" [ngModel]>Female</option>
+            <option value="other" [ngModel]>Other</option>
         </select>
         <br>
         <h4>Birthdate</h4>
         <input type="date" name="birthday" class="date" ngModel>
-        <br>
+        <input name="profile" [ngModel]="imagePath" hidden>
+        <br><br>
         <button type="submit" class="btn btn-primary signup">Create</button>
-        <br>
+        <br><br>
     </form>
-    <button onClick="backAway()" class="btn btn-primary">Cancel</button>
+    <button onclick="backAway()" class="btn btn-primary signup">Cancel</button>
+    <br><br>
 </div>
     <div class="col-md-4"></div>
 </div>    

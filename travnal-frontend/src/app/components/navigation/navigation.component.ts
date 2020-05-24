@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
+  isLoggedIn: boolean;
   profileimage:string="../../../assets/profile-images/janedoe.jpg"
   
-  constructor() { }
-
+  constructor() {
+  }
+  
   ngOnInit(): void {
   }
 

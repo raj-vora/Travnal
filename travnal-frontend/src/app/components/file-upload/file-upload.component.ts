@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders } from '@angular/common/http'
 import { FileUploadService } from '../../services/file-upload.service';
 
 @Component({
@@ -9,7 +8,8 @@ import { FileUploadService } from '../../services/file-upload.service';
 })
 export class FileUploadComponent implements OnInit {
   fileToUpload: File = null;
-
+  imagePath;
+  imgURL: string | ArrayBuffer;
   constructor(private fileUploadService: FileUploadService) { }
 
   ngOnInit(): void {
@@ -17,12 +17,21 @@ export class FileUploadComponent implements OnInit {
 
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
+    }
   }
 
   upload() {
     this.fileUploadService.postFile(this.fileToUpload)
     .subscribe(
-      data => console.log(data),
+      data => {
+        this.imagePath = data.profile
+        console.log(this.imagePath)
+      },
       error => console.log(error)
     );
   }

@@ -3,9 +3,11 @@ const express = require('express')
 require('express-async-errors');
 const app = express()
 const cors = require('cors')
-const usersRouter = require('./controllers/users')
-const loginRouter = require('./controllers/login')
-const uploadRouter = require('./controllers/upload')
+const users = require('./controllers/users')
+const login = require('./controllers/login')
+const upload = require('./controllers/upload')
+const create = require('./controllers/create')
+const User = require('./models/user')
 
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
@@ -22,9 +24,16 @@ app.use(express.json())
 app.use(middleware.requestLogger)
 app.use(middleware.tokenExtractor)
 
-app.use('/api/users', usersRouter)
-app.use('/api/login', loginRouter)
-app.use('/api/upload', uploadRouter)
+app.use('/api/users', users)
+app.use('/api/login', login)
+app.use('/api/upload', upload)
+app.use('/api/create', create)
+app.get('/api/:username', async (request, response) => {
+    const username = request.params.username;
+    const user = await User.findOne({ username: username })
+    response.send(user.toJSON());
+})
+
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)

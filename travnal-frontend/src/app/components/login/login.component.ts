@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -7,17 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService: LoginService, private sharedService: SharedService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   login(value) {
-    console.log(value)
+    this.loginService.login(value)
+      .subscribe(
+        data => {
+          this.sharedService.username = data.username;
+          this.router.navigate(['/profile']);
+        },
+        error => console.log(error)
+      );
   }
 
   signup(value) {
-    console.log(value)
+    this.loginService.signUp(value)
+      .subscribe(
+        data => {
+          this.sharedService.username = data.username;
+          this.router.navigate(['/create']);
+        },
+        error => console.log(error)
+      );
   }
-
 }

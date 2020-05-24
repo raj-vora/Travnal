@@ -4,5 +4,6 @@
     <input type="file" [accept]="[ '.jpg', '.jpeg', '.png' ]"
            id="file"
            (change)="handleFileInput($event.target.files)">
-    <button type="button" class="btn btn-success btn-s" (click)="upload()">Upload</button>
+    <button type="button" class="btn btn-success btn-s" (click)="upload()">Upload</button><br />
+    <img [src]="imgURL" height="200" *ngIf="imgURL">
 </div>

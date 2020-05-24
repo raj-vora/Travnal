@@ -23,7 +23,7 @@ router.post('/', upload, function (req, res) {
         }  
         // No error occured.
         path = req.file.path;
-        return res.status(200).send(path); 
+        return res.json({"profile":path}); 
         }); 
     }
 });

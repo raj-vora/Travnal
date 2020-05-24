@@ -4,18 +4,22 @@ const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 
 usersRouter.post('/', async(request, response, next) => {
-    const body = request.body
+    const { username, email, password, cpassword} = request.body
 
-    const password = body.password
     if (password === undefined || password.length < 8) {
         return response.status(400).json({ error: 'password is not in required format.' })
+    }
+
+    if(password !== cpassword) {
+        return response.status(400).json({ error: 'passwords don\'t match.' })
     }
 
     const saltRounds = 10
     const passwordHash = await bcrypt.hash(password, saltRounds)
 
     const user = new User({
-        username: body.username,
+        username: username,
+        email: email,
         passwordHash,
     })
 

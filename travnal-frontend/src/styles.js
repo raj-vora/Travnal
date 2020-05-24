@@ -1,4 +1,4 @@
-(function() {
+(function timeline() {
 
   'use strict';
 
