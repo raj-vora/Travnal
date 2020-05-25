@@ -39,4 +39,15 @@ router.post('/place', async (request, response) => {
     response.send({testing: "testing"})
 })
 
+router.post('/follow', async (request, response) => {
+    const { urlname, username } = request.body;
+    const follower = await User.findOne({ username: username })
+    const followed = await User.findOne({ username: urlname })
+    follower.following.push(followed._id)
+    followed.followers.push(follower._id)
+    await follower.save()
+    await followed.save()
+    response.send({temp: "testing"})
+})
+
 module.exports = router;

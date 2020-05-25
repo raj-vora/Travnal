@@ -53,7 +53,7 @@ export class TimelineComponent implements OnInit {
   addPlace(values) {
     values['username'] = this.urlname;
     values['id'] = this.tripid;
-    this.loginService.createPlace(values).subscribe(
+    this.loginService.create(values, 'create/place').subscribe(
       data => console.log(data),
       error => console.error(error)
     )

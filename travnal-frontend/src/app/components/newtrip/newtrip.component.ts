@@ -19,7 +19,7 @@ export class NewtripComponent implements OnInit {
   submit(values: string[]) {
     values['username'] = this.name
     values['places'] = []
-    this.loginService.createTrip(values).subscribe(data => {
+    this.loginService.create(values, 'create/trip').subscribe(data => {
       console.log(data)
     })
   }

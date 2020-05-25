@@ -47,7 +47,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   create(values: string[]) {
-    this.loginService.create(values)
+    this.loginService.create(values, 'create')
       .subscribe(data => {
         this.shared.userDetails = data;
         

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-
+  username: string;
   isLoggedIn: boolean;
   profileimage:string="../../../assets/profile-images/janedoe.jpg"
   
@@ -14,6 +14,8 @@ export class NavigationComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.username = currentUser.username;
   }
 
 }

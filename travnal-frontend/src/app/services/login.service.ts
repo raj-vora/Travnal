@@ -19,31 +19,15 @@ export class LoginService {
   
   constructor(private http: HttpClient) { }
 
-  signUp(values: string[]): Observable<any> {
-    return this.http.post(this.baseUrl+'users', values, httpOptions);
-  }
-
-  login(values: string[]): Observable<any> {
-    return this.http.post(this.baseUrl+'login', values, httpOptions);
-  }
-
-  create(values: string[]): Observable<any> {
-    return this.http.post(this.baseUrl+'create', values, httpOptions)
-  }
-
-  createTrip(values: string[]): Observable<any> {
-    return this.http.post(this.baseUrl+'create/trip', values, httpOptions)
-  }
-
-  createPlace(values: string[]): Observable<any> {
-    return this.http.post(this.baseUrl+'create/place', values, httpOptions);
+  create(values: Object, link:string): Observable<any> {
+    return this.http.post(this.baseUrl+link, values, httpOptions)
   }
 
   getUser(username:string): Observable<any> {
     return this.http.get(this.baseUrl+'getdata/'+username, httpOptions)
   }
 
-  getTrip(values: { username: string; id: number; }): Observable<any> {
+  getTrip(values: Object): Observable<any> {
     return this.http.post(this.baseUrl+'getdata/tripinfo', values, httpOptions)
   }
 }

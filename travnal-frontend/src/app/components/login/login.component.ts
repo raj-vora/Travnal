@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(value) {
-    this.loginService.login(value)
+  login(values) {
+    this.loginService.create(values, 'login')
       .subscribe(
         data => {
           localStorage.setItem('currentUser', JSON.stringify({ token: data.token, username: data.username }))
@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
       );
   }
 
-  signup(value) {
-    this.loginService.signUp(value)
+  signup(values) {
+    this.loginService.create(values, 'users')
       .subscribe(
         data => {
           this.sharedService.username = data.username;

@@ -3,7 +3,7 @@ const User = require('../models/user');
 
 router.get('/:username', async (request, response) => {
     const username = request.params.username;
-    const user = await User.findOne({ username: username })
+    const user = await User.findOne({ username: username }).populate('followers').populate('following')
     response.send(user.toJSON());
 })
 

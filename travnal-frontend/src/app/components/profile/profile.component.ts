@@ -12,33 +12,46 @@ export class ProfileComponent implements OnInit {
 
   profileimage:string="../../../assets/profile-images/janedoe.jpg"
   username:string;
+  urlname: string;
   location:string;
-  noposts:number;
-  nofollowers:number;
-  nofollowing:number;
+  followers;
+  following;
   details: string[];
   show: boolean;
-
+  posts: string[];
+  
   constructor(private shared: SharedService, private login: LoginService, private router: Router) { }
 
   ngOnInit(): void {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.username = currentUser.username;
-    const urlname = this.router.url.split('/')[1];
-    if(this.username === urlname) {
+    this.urlname = this.router.url.split('/')[1];
+    if(this.username === this.urlname) {
       this.show = true
     }
     else {
-      this.username = urlname
       this.show = false
     }
-    this.login.getUser(this.username).subscribe(data => {
+    this.login.getUser(this.urlname).subscribe(data => {
       this.details = data
       this.shared.userDetails = this.details
+      this.username = this.details['username']
       this.location = this.details['city'];
-      this.noposts = this.details['posts'].length
-      this.nofollowers = this.details['followers'].length
-      this.nofollowing = this.details['following'].length
+      this.posts = this.details['posts']
+      this.followers = this.details['followers']
+      
+      this.following = this.details['following']
+      console.log(this.following)
     })
+  }
+
+  follow() {
+    this.login.create({urlname: this.urlname, username: this.username}, 'create/follow').subscribe(
+      data => {
+        console.log(data)
+        this.ngOnInit()
+      },
+      error => console.log(error)
+    )
   }
 }

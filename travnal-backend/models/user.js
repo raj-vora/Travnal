@@ -22,8 +22,14 @@ const userSchema = new mongoose.Schema({
     name: String,
     birthdate: String,
     city: String,
-    followers: Array,
-    following: Array,
+    followers: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    following: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     feeds: Array,
     posts: [{
         tripname: String,
