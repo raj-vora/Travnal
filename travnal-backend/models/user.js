@@ -25,7 +25,18 @@ const userSchema = new mongoose.Schema({
     followers: Array,
     following: Array,
     feeds: Array,
-    posts: Array,
+    posts: [{
+        tripname: String,
+        tripId: Number,
+        date: String,
+        description: String,
+        places: [{
+            name: String,
+            description: String,
+            location: String,
+            date: String
+        }]
+    }],
     profile: String
 })
 

@@ -19,8 +19,9 @@ export class LoginComponent implements OnInit {
     this.loginService.login(value)
       .subscribe(
         data => {
+          localStorage.setItem('currentUser', JSON.stringify({ token: data.token, username: data.username }))
           this.sharedService.username = data.username;
-          this.router.navigate(['/profile']);
+          this.router.navigate([`/${data.username}/profile`]);
         },
         error => console.log(error)
       );

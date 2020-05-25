@@ -11,13 +11,14 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},
-  {path:"profile", component:ProfileComponent},
-  {path:"feed", component:FeedComponent},
+  {path:":username/profile", component:ProfileComponent},
+  {path:":username/feed", component:FeedComponent},
   {path:"create", component:CreateUserComponent},
-  {path:"timeline", component:TimelineComponent},
-  {path:"newtrip", component:NewtripComponent},
+  {path:":username/:id/timeline", component:TimelineComponent},
+  {path:":username/newtrip", component:NewtripComponent},
   {path:"logout", component:LogoutComponent},
-  {path:"upload", component: FileUploadComponent}
+  {path:"upload", component: FileUploadComponent},
+  {path:"**", redirectTo:"/login"}
 ];
 
 @NgModule({

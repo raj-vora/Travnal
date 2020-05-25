@@ -1,71 +1,48 @@
-<section class="intro">
+<div class="row" id="addplace">
+  <div class="container">
+      <div class="col-md-3"></div>            
+      <div class="col-md-6 login signin">
+          <div class="row">
+              <h2 class="signin-text">Add Place</h2>
+          </div>
+          <form #placeForm="ngForm" (ngSubmit)="addPlace(placeForm.value)">
+              <h3>Name</h3>
+              <input name="name" class="form-control" placeholder="Udipi" ngModel [style.width.%]="100">
+              <br>
+              <h3>Description</h3>
+              <input name="description" class="form-control" placeholder="unique blend of urban development with traditional culture deeply enrooted" ngModel [style.width.%]="100">
+              <br><br>
+              <h3>Location</h3>
+              <input name="location" class="form-control" placeholder="E.g.: Dadar" ngModel>
+              <br><br>
+              <button type="submit" class="btn btn-primary form-control">Add Place</button>
+              <br><br>
+          </form>
+          <button (click)="close()" class="btn btn-primary form-control">Cancel</button>
+          <br><br>
+      </div>
+      <div class="col-md-3"></div>            
+    </div>
+</div>  
+  
+<div class="container">
+  <section class="intro">
     <div class="container">
-      <h1>Trip to Goa</h1>
+      <h2>{{title}}</h2>
+      <h3>a trip by <a [href]="userlink"><b>{{username}}</b></a> </h3>
     </div>
   </section>
-  
+
   <section class="timeline">
     <ul>
-      <li>
-        <div>
-          <time>1934</time> At vero eos et accusamus et iusto odio dignissimos ducimus qui 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>1937</time> Proin quam velit, efficitur vel neque vitae, rhoncus commodo mi. Suspendisse finibus mauris et bibendum molestie. Aenean ex augue, varius et pulvinar in, pretium non nisi.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>1940</time> Proin iaculis, nibh eget efficitur varius, libero tellus porta dolor, at pulvinar tortor ex eget ligula. Integer eu dapibus arcu, sit amet sollicitudin eros.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>1943</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>1946</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>1956</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>1957</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>1967</time> Aenean condimentum odio a bibendum rhoncus. Ut mauris felis, volutpat eget porta faucibus, euismod quis ante.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>1977</time> Vestibulum porttitor lorem sed pharetra dignissim. Nulla maximus, dui a tristique iaculis, quam dolor convallis enim, non dignissim ligula ipsum a turpis.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>1985</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>2000</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>2005</time> In mattis elit vitae odio posuere, nec maximus massa varius. Suspendisse varius volutpat mattis. Vestibulum id magna est.
-        </div>
+      <li *ngFor="let place of places" class="in-view">
+          <div class="main" *ngIf="place">
+            <time>{{place.date}}</time> <b>{{place.name}}</b><br>
+            {{place.description}}
+            <time>{{place.location}}</time>
+          </div>
       </li>
     </ul>
   </section>
-<app-footer></app-footer>
+  <img *ngIf="show" src="https://cdn4.iconfinder.com/data/icons/iconsimple-places/512/pin_plus-512.png" class="add-icon" (click)="openform()">
+</div>

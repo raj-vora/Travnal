@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedService } from './services/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { SharedService } from './services/shared.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if(!currentUser.username){
+      this.router.navigate(['/login'])
+    }
+  }
 }

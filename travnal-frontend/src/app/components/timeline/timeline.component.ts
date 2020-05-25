@@ -1,48 +1,62 @@
-import { Component, OnInit } from '@angular/core';
-
-function timeline() {
-
-  'use strict';
-
-  // define variables
-  var items = document.querySelectorAll(".timeline li");
-
-  function isElementInViewport(el) {
-    var rect = el.getBoundingClientRect();
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
-
-  function callbackFunc() {
-    for (var i = 0; i < items.length; i++) {
-      if (isElementInViewport(items[i])) {
-        items[i].classList.add("in-view");
-      }
-    }
-  }
-
-  // listen for events
-  window.addEventListener("load", callbackFunc);
-  window.addEventListener("resize", callbackFunc);
-  window.addEventListener("scroll", callbackFunc);
-
-};
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-timeline',
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.css']
 })
+
 export class TimelineComponent implements OnInit {
+  title: string;
+  username: string;
+  tripid: number;
+  userlink: string;
+  urlname: string;
+  show: boolean;
+  places: string[];
 
-  constructor() { }
-
-  ngOnInit(): void {
-    timeline()
+  constructor(private router: Router, private loginService: LoginService, private modalService: NgbModal) {
   }
 
+  ngOnInit(): void {
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.username = currentUser.username;
+    const url = this.router.url.split('/');
+    this.urlname = url[1];
+    this.tripid = Number(url[2]);
+    if(this.username === this.urlname) {
+      this.show = true
+    }
+    else {
+      this.username = this.urlname
+      this.show = false
+    }
+    
+    this.loginService.getTrip({"username":this.urlname, "id":this.tripid}).subscribe(data => {
+      this.title = data.trip.tripname
+      this.userlink = `${this.urlname}/profile`
+      this.places = data.trip.places
+    })
+  }
+
+  openform() {
+    document.getElementById('addplace').style.display='block'
+  }
+
+  close() {
+    document.getElementById('addplace').style.display='none'
+  }
+
+  addPlace(values) {
+    values['username'] = this.urlname;
+    values['id'] = this.tripid;
+    this.loginService.createPlace(values).subscribe(
+      data => console.log(data),
+      error => console.error(error)
+    )
+    this.places.push(values)
+  }
 }

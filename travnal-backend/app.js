@@ -7,6 +7,7 @@ const users = require('./controllers/users')
 const login = require('./controllers/login')
 const upload = require('./controllers/upload')
 const create = require('./controllers/create')
+const getdata = require('./controllers/getdata')
 const User = require('./models/user')
 
 const middleware = require('./utils/middleware')
@@ -28,12 +29,7 @@ app.use('/api/users', users)
 app.use('/api/login', login)
 app.use('/api/upload', upload)
 app.use('/api/create', create)
-app.get('/api/:username', async (request, response) => {
-    const username = request.params.username;
-    const user = await User.findOne({ username: username })
-    response.send(user.toJSON());
-})
-
+app.use('/api/getdata', getdata)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)

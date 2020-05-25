@@ -164,3 +164,23 @@ time {
     border-color: transparent #F45B69 transparent transparent;
   }
 }
+
+.add-icon{
+  width:50px;
+  height:50px;
+  right: 5vh;
+  bottom:5vh;
+  position:fixed;
+  align-content:flex-end;
+  cursor: pointer;
+}
+
+#addplace {
+  display: none;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+a {
+  color: white;
+}

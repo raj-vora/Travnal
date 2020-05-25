@@ -5,15 +5,15 @@
     <div class="col-md-4">
     </div>
     <div class="col-md-4 login signin newtrip">
-        <form action="/new-trip" method="POST">
+        <form #tripForm="ngForm" (ngSubmit)="submit(tripForm.value)" >
             <h3>Trip Name</h3>
-            <input name="tripname" type="text" class="form-control" placeholder="Vacation to Goa">
+            <input name="tripname" class="form-control" placeholder="Vacation to Goa" [ngModel]>
             <br>
             <h3>Start Date</h3>
-            <input name="date" type="text" class="form-control" placeholder="16/04/2018">
+            <input name="date" type="text" class="form-control" placeholder="16/04/2018" [ngModel]>
             <br><br>
             <h3>Description</h3>
-            <input name="description" type="text" class="form-control" placeholder="My roadtrip trip to goa with my friends">
+            <input name="description" type="text" class="form-control" placeholder="My roadtrip trip to goa with my friends" [ngModel]>
             <br><br>
             <button type="submit" class="btn btn-primary signup" >Start Trip</button>
             <br><br>

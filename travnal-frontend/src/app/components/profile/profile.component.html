@@ -26,6 +26,9 @@
                         </div>
                     </div>
                     <br><br>
+
+                    <a href="/{{username}}/newtrip" *ngIf="show" ><button class="btn btn-primary"> Create Trip </button></a>
+                    <button class="btn btn-primary" *ngIf="!show"> Follow Me </button>
                     <!--<% if(show==0){ %>
                         <a href="/follow/<%= name %>"><button class="btn btn-primary"> Follow Me </button></a> if and add this to db
                     <% } %>
