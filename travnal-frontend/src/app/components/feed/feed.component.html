@@ -1,6 +1,17 @@
 <div id="profile-feed-sec">
         <section class="section">
-            <div class="grid">
+            <div class="grid" *ngFor="let profile of following">
+                    <div *ngFor="let post of profile['posts']">
+                        <div class="item item--medium">
+                            <a href="/{{username}}/{{post.tripId}}/timeline">
+                                <div class="item__details">
+                                    <b>{{post.tripname}}</b><br>
+                                    {{post.description}}
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                
                 <!--<% if(posts.length>0) {%>
                     <% for(var i=0; i<posts.length; i++) {%>
                             <div class="item <%= posts[i].class%>">

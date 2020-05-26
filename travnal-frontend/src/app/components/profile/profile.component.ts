@@ -38,10 +38,8 @@ export class ProfileComponent implements OnInit {
       this.username = this.details['username']
       this.location = this.details['city'];
       this.posts = this.details['posts']
-      this.followers = this.details['followers']
-      
+      this.followers = this.details['followers']      
       this.following = this.details['following']
-      console.log(this.following)
     })
   }
 

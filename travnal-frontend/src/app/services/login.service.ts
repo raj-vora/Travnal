@@ -5,7 +5,6 @@ import { Observable, BehaviorSubject } from 'rxjs';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
   })
 }
 

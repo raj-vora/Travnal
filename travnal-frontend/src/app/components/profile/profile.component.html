@@ -25,6 +25,7 @@
                             <p>Following</p>
                         </div>
                     </div>
+                    {{details['bio']}}
                     <br><br>
                     <a href="/{{username}}/newtrip" *ngIf="show" ><button class="btn btn-primary"> Create Trip </button></a>
                     <button (click)="follow()" class="btn btn-primary" *ngIf="!show"> Follow Me </button>
@@ -37,8 +38,8 @@
     </div>-->
     <div class="col-md-8" id="profile-feed-sec">
     <section class="section">
-        <div class="grid">
-            <div class="item item--medium" *ngFor="let post of posts">
+        <div class="grid" *ngFor="let post of posts">
+            <div class="item item--medium" >
                 <a href="/{{username}}/{{post.tripId}}/timeline">
                     <div class="item__details">
                         <b>{{post.tripname}}</b><br>
