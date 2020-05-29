@@ -9,7 +9,6 @@
     </div>
     <form #createForm="ngForm" (ngSubmit)="create(createForm.value)" >
         <div class="form-group">
-
             <h4><label for="file">Upload Profile Image</label></h4>
             <input type="file" [accept]="[ '.jpg', '.jpeg', '.png' ]"
                    id="file"

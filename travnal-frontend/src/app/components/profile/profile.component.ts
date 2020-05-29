@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from '../../services/shared.service';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  profileimage:string="../../../assets/profile-images/janedoe.jpg"
+  profileimage:string="../../../assets/"
   username:string;
   urlname: string;
   location:string;
@@ -20,7 +19,7 @@ export class ProfileComponent implements OnInit {
   show: boolean;
   posts: string[];
   
-  constructor(private shared: SharedService, private login: LoginService, private router: Router) { }
+  constructor(private login: LoginService, private router: Router) { }
 
   ngOnInit(): void {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -34,12 +33,12 @@ export class ProfileComponent implements OnInit {
     }
     this.login.getUser(this.urlname).subscribe(data => {
       this.details = data
-      this.shared.userDetails = this.details
-      this.username = this.details['username']
       this.location = this.details['city'];
       this.posts = this.details['posts']
       this.followers = this.details['followers']      
       this.following = this.details['following']
+      console.log(this.followers)
+      this.profileimage = this.profileimage+this.details['profile']
     })
   }
 
@@ -51,5 +50,15 @@ export class ProfileComponent implements OnInit {
       },
       error => console.log(error)
     )
+  }
+
+  open(id: string) {
+    console.log(id)
+    if(document.getElementById(id).style.display==='block') {
+      document.getElementById(id).style.display='none'
+    }
+    else {
+      document.getElementById(id).style.display='block'
+    }
   }
 }

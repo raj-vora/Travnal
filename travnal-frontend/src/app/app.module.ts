@@ -10,10 +10,10 @@ import { FeedComponent } from './components/feed/feed.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { LogoutComponent } from './components/logout/logout.component';
 import { NewtripComponent } from './components/newtrip/newtrip.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { HttpClientModule } from '@angular/common/http'
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,6 @@ import { HttpClientModule } from '@angular/common/http'
     ProfileComponent,
     TimelineComponent,
     NavigationComponent,
-    LogoutComponent,
     NewtripComponent,
     FileUploadComponent
   ],
@@ -35,7 +34,7 @@ import { HttpClientModule } from '@angular/common/http'
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

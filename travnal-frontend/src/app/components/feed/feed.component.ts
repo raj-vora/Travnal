@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from '../../services/shared.service';
 import { LoginService } from '../../services/login.service';
 
 @Component({

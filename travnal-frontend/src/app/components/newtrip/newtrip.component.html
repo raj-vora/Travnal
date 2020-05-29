@@ -5,16 +5,29 @@
     <div class="col-md-4">
     </div>
     <div class="col-md-4 login signin newtrip">
+        <div class="form-group">
+
+            <h4><label for="file">Cover Image</label></h4>
+            <input type="file" [accept]="[ '.jpg', '.jpeg', '.png' ]"
+                   id="file"
+                   class="form-control"
+                   (change)="handleFileInput($event.target.files)">
+            <button type="button" class="btn btn-success btn-s" (click)="upload()">Upload</button><br />
+            <img [src]="imgURL" height="200" *ngIf="imgURL">
+            <h3>{{uploaded}}</h3>
+        </div>
+
         <form #tripForm="ngForm" (ngSubmit)="submit(tripForm.value)" >
             <h3>Trip Name</h3>
             <input name="tripname" class="form-control" placeholder="Vacation to Goa" [ngModel]>
             <br>
             <h3>Start Date</h3>
             <input name="date" type="text" class="form-control" placeholder="16/04/2018" [ngModel]>
-            <br><br>
+            <br>
             <h3>Description</h3>
             <input name="description" type="text" class="form-control" placeholder="My roadtrip trip to goa with my friends" [ngModel]>
             <br><br>
+            <input name="profile" [ngModel]="imagePath" hidden>
             <button type="submit" class="btn btn-primary signup" >Start Trip</button>
             <br><br>
         </form>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
-import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -10,17 +9,17 @@ import { SharedService } from '../../services/shared.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private sharedService: SharedService, private router: Router) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   login(values) {
-    this.loginService.create(values, 'login')
+    this.loginService.login(values)
       .subscribe(
         data => {
           localStorage.setItem('currentUser', JSON.stringify({ token: data.token, username: data.username }))
-          this.sharedService.username = data.username;
+          this.loginService.loggedIn.next(true);
           this.router.navigate([`/${data.username}/profile`]);
         },
         error => console.log(error)
@@ -31,8 +30,7 @@ export class LoginComponent implements OnInit {
     this.loginService.create(values, 'users')
       .subscribe(
         data => {
-          this.sharedService.username = data.username;
-          this.router.navigate(['/create']);
+          this.router.navigate(['/create', data.username]);
         },
         error => console.log(error)
       );

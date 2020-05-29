@@ -17,16 +17,26 @@
                             <p>Posts</p>
                         </div>
                         <div class="col-4">
-                            <h4 *ngIf="followers">{{followers.length}}</h4>
+                            <h4 *ngIf="followers" (click)="open('followers')">{{followers.length}}</h4>
                             <p>Followers</p>
                         </div>
                         <div class="col-4">
-                            <h4 *ngIf="following">{{following.length}}</h4>
+                            <h4 *ngIf="following" (click)="open('following')">{{following.length}}</h4>
                             <p>Following</p>
                         </div>
                     </div>
                     {{details['bio']}}
-                    <br><br>
+                    <br>
+                    <a href="http://{{details['website']}}">{{details['website']}}</a>
+                    <br>
+                    <div *ngFor="let person of followers" id="followers">
+                        Followers<br>
+                        <a href="/{{person['username']}}/profile">{{person['username']}}</a>
+                    </div>
+                    <div *ngFor="let person of following" id="following">
+                        Following<br>
+                        <a href="/{{person['username']}}/profile">{{person['username']}}</a>
+                    </div>
                     <a href="/{{username}}/newtrip" *ngIf="show" ><button class="btn btn-primary"> Create Trip </button></a>
                     <button (click)="follow()" class="btn btn-primary" *ngIf="!show"> Follow Me </button>
                 </div>

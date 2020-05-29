@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
-import { SharedService } from '../../services/shared.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FileUploadService } from '../../services/file-upload.service';
 
 @Component({
@@ -14,14 +13,13 @@ export class CreateUserComponent implements OnInit {
   username:string;
   uploaded: string;
   fileToUpload: File = null;
-  imagePath;
+  imagePath: FileList;
   imgURL: string | ArrayBuffer;
 
-  constructor(private loginService: LoginService, private shared: SharedService, private router: Router, private fileUploadService: FileUploadService) { }
+  constructor(private loginService: LoginService, private router: Router, private fileUploadService: FileUploadService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.shared.username);
-    this.username = this.shared.username;
+    this.route.data.subscribe(value => this.username=value.username)
   }
 
   handleFileInput(files: FileList) {
@@ -49,8 +47,7 @@ export class CreateUserComponent implements OnInit {
   create(values: string[]) {
     this.loginService.create(values, 'create')
       .subscribe(data => {
-        this.shared.userDetails = data;
-        
+        this.loginService.loggedIn.next(true);
         this.router.navigate(['/profile'])
       })
   }

@@ -1,67 +1,16 @@
 <div id="profile-feed-sec">
         <section class="section">
             <div class="grid" *ngFor="let profile of following">
-                    <div *ngFor="let post of profile['posts']">
-                        <div class="item item--medium">
-                            <a href="/{{username}}/{{post.tripId}}/timeline">
-                                <div class="item__details">
-                                    <b>{{post.tripname}}</b><br>
-                                    {{post.description}}
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                
-                <!--<% if(posts.length>0) {%>
-                    <% for(var i=0; i<posts.length; i++) {%>
-                            <div class="item <%= posts[i].class%>">
-                                <a href="/trip/<%= posts[i].username %>/<%= posts[i].idt %>">
-                                <div class="item__details">  
-                                <b> <%= posts[i].tripname %> </b>
-                                <br>
-                                <%= posts[i].decription %>
-                                </div>
-                                </a>
+                <div *ngFor="let post of profile['posts']">
+                    <div class="item item--medium">
+                        <a href="/{{profile['username']}}/{{post.tripId}}/timeline">
+                            <div class="item__details">
+                                <b>{{post.tripname}}</b><br>
+                                {{post.description}}
                             </div>
-                    <% } %>
-                <% } else{ %>
-                    <h3>No posts yet!</h3>
-                <% } %>-->
-                <div class="item">
-                <div class="item__details">
-                    jelly-o brownie sweet
-                </div>
-                </div>
-                <div class="item item--large">
-                <div class="item__details">
-                    Muffin jelly gingerbread 
-                </div>
-                </div>
-                <div class="item item--medium">
-                <div class="item__details">
-                    sesame snaps chocolate
-                </div>
-                </div>
-                <div class="item item--large">
-                <div class="item__details">
-                    Oat cake
-                </div>
-                </div>
-                <div class="item item--full">
-                <div class="item__details">
-                    jujubes cheesecake
-                </div>
-                </div>
-                <div class="item item--medium">
-                <div class="item__details">
-                    Dragée pudding brownie
-                </div>
-                </div>
-                <div class="item">
-                <div class="item__details">
-                    powder toffee
-                </div>
-                </div>
+                        </a>
+                    </div>
+                </div>                
             </div>
     </section>
 </div>

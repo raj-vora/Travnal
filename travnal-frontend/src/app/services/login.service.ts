@@ -12,11 +12,20 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LoginService {
-  
+  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
+
   baseUrl = 'http://localhost:8001/api/';
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
   
   constructor(private http: HttpClient) { }
+
+  login(values: Object): Observable<any> {
+    return this.http.post(this.baseUrl+'login', values, httpOptions)
+  }
 
   create(values: Object, link:string): Observable<any> {
     return this.http.post(this.baseUrl+link, values, httpOptions)
