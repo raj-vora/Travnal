@@ -37,7 +37,6 @@ export class ProfileComponent implements OnInit {
       this.posts = this.details['posts']
       this.followers = this.details['followers']      
       this.following = this.details['following']
-      console.log(this.followers)
       this.profileimage = this.profileimage+this.details['profile']
     })
   }

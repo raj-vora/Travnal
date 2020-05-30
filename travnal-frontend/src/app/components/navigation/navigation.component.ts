@@ -20,8 +20,19 @@ export class NavigationComponent implements OnInit {
     this.isLoggedIn$ = this.loginService.isLoggedIn;
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.username = currentUser.username;
+    if(this.username){
+      this.loginService.loggedIn.next(true);
+      this.isLoggedIn$ = this.loginService.isLoggedIn;
+    }
     this.loginService.getUser(this.username).subscribe(data => {
       this.profileimage = this.profileimage+data['profile']
+    })
+  }
+
+  search(value) {
+    this.loginService.search(value['search']).subscribe(data => {
+      this.loginService.sharedData = data
+      this.router.navigate(['/search'])
     })
   }
 

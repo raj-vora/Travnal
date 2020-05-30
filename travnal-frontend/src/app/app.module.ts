@@ -14,6 +14,7 @@ import { NewtripComponent } from './components/newtrip/newtrip.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { HttpClientModule } from '@angular/common/http'
 import { AuthGuard } from './services/auth.guard';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AuthGuard } from './services/auth.guard';
     TimelineComponent,
     NavigationComponent,
     NewtripComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

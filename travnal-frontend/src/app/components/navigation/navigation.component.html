@@ -13,9 +13,9 @@
             <ul class="nav navbar-nav">
                 <li><a routerLink="{{username}}/feed">Feed</a></li>
                 <li><a routerLink="/{{username}}/profile">Profile</a></li>
-                <li (click)="logout()"><a>Logout</a></li>
-                <form class="navbar-form navbar-left" action="/search" method="POST">
-                    <input type="text" name="search_value" class="form-control" placeholder="Search">
+                <li (click)="logout()"><a href=""> Logout</a></li>
+                <form #searchForm="ngForm" class="navbar-form navbar-left" (ngSubmit)="search(searchForm.value)" >
+                    <input type="text" name="search" class="form-control" placeholder="Search" ngModel >
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>
             </ul>

@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class LoginService {
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
+  sharedData: any;
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }
@@ -37,5 +37,9 @@ export class LoginService {
 
   getTrip(values: Object): Observable<any> {
     return this.http.post(this.baseUrl+'getdata/tripinfo', values, httpOptions)
+  }
+
+  search(value: string): Observable<any> {
+    return this.http.get(this.baseUrl+'getdata/search/'+value)
   }
 }

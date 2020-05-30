@@ -47,6 +47,7 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.plugin(uniqueValidator)
+userSchema.index({'$**': 'text'});
 
 userSchema.set('toJSON', {
     transform: (document, returnedObject) => {

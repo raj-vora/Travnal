@@ -8,6 +8,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
 import { NewtripComponent } from './components/newtrip/newtrip.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { AuthGuard } from './services/auth.guard';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:":username/:id/timeline", component:TimelineComponent, canActivate: [AuthGuard]},
   {path:":username/newtrip", component:NewtripComponent, canActivate: [AuthGuard]},
   {path:"upload", component: FileUploadComponent, canActivate: [AuthGuard]},
+  {path: "search", component:SearchComponent},
   {path:"**", redirectTo:"/login"}
 ];
 

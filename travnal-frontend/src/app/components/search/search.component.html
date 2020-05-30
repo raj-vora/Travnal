@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="col-md-2"></div>
+    <div class="col-md-8" id="profile-feed-sec">
+        <section class="section">
+            <div *ngIf="!users">No Search results found</div>
+                <div class="card" *ngFor="let user of users">
+                    <img src="{{image+user['profile']}}" class="profile-pic"><br>
+                    <a href="{{user['username']}}/profile">{{user['username']}}</a>
+                </div>
+        </section>
+        <section>
+            <div class="grid">
+                <div *ngFor="let trip of trips" class="item item--medium">
+                    <a href="/{{trip['username']}}/{{trip.post.tripId}}/timeline">
+                        <div class="item__details">
+                            <b>{{trip.post.tripname}}</b><br>
+                            {{trip.post.description}}
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-md-2"></div>
+</div>

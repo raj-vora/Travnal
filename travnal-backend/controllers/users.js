@@ -36,9 +36,7 @@ usersRouter.post('/', async(request, response, next) => {
 })
 
 usersRouter.get('/', async(request, response) => {
-    const users = await User
-        .find({})
-
+    const users = await User.find({}).populate('followers').populate('following');
     response.json(users.map(user => user.toJSON()))
 })
 

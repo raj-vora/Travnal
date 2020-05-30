@@ -286,3 +286,19 @@ h1 {
 .date{
   color: #000;
 }
+
+.card {
+  background-color: #fff;
+  text-align: center;
+  align-content: center;
+  display: inline-block;
+  border-radius: 2%;
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid #000;
+}
+
+#profile-feed-sec{
+  text-align: center;
+  align-content: center;
+}
