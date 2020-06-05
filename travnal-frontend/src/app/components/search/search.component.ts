@@ -18,5 +18,4 @@ export class SearchComponent implements OnInit {
     this.trips = this.loginService.sharedData.trips;
     console.log(this.trips);
   }
-
 }

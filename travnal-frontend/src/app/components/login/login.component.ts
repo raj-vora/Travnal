@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.loginService.create(values, 'users')
       .subscribe(
         data => {
+          localStorage.setItem('currentUser', JSON.stringify({ token: data.token, username: data.username }))
           this.router.navigate(['/create', data.username]);
         },
         error => console.log(error)

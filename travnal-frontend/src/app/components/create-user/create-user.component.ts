@@ -19,7 +19,8 @@ export class CreateUserComponent implements OnInit {
   constructor(private loginService: LoginService, private router: Router, private fileUploadService: FileUploadService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe(value => this.username=value.username)
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.username = currentUser.username;
   }
 
   handleFileInput(files: FileList) {
@@ -48,7 +49,8 @@ export class CreateUserComponent implements OnInit {
     this.loginService.create(values, 'create')
       .subscribe(data => {
         this.loginService.loggedIn.next(true);
-        this.router.navigate(['/profile'])
+        
+        this.router.navigate([`${data.username}/profile`])
       })
   }
 

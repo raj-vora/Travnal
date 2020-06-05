@@ -10,10 +10,6 @@ import { FileUploadService } from '../../services/file-upload.service';
 })
 export class NewtripComponent implements OnInit {
   name:string;
-  imagePath: FileList;
-  uploaded: string;
-  fileToUpload: File = null;
-  imgURL: string | ArrayBuffer;
   
   constructor(private router: Router, private loginService: LoginService, private fileUploadService: FileUploadService) { }
 
@@ -29,27 +25,4 @@ export class NewtripComponent implements OnInit {
       console.log(data)
     })
   }
-
-  handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-    var reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]); 
-    reader.onload = (_event) => { 
-      this.imgURL = reader.result;
-    }
-  }
-
-  upload() {
-    this.fileUploadService.postFile(this.fileToUpload)
-    .subscribe(
-      data => {
-        this.imagePath = data.profile
-        console.log(this.imagePath)
-        this.uploaded="Successfully uploaded Image"
-      },
-      error => console.log(error)
-    );
-  }
-
 }

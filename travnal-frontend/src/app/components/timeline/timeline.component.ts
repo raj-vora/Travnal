@@ -58,5 +58,6 @@ export class TimelineComponent implements OnInit {
       error => console.error(error)
     )
     this.places.push(values)
+    this.close()
   }
 }

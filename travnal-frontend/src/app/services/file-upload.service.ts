@@ -17,10 +17,8 @@ export class FileUploadService {
   constructor(private httpClient: HttpClient) { }
 
   postFile(fileToUpload: File): Observable<any> {
-    const endpoint = 'http://localhost:8001/api/upload';
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-    return this.httpClient
-      .post(endpoint, formData, httpOptions);
+    return this.httpClient.post('/api/upload', formData, httpOptions);
 }
 }

@@ -14,12 +14,12 @@ const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:":username/profile", component:ProfileComponent, canActivate: [AuthGuard]},
   {path:":username/feed", component:FeedComponent, canActivate: [AuthGuard]},
-  {path:"create", component:CreateUserComponent, canActivate: [AuthGuard]},
+  {path:"create", component:CreateUserComponent},
   {path:":username/:id/timeline", component:TimelineComponent, canActivate: [AuthGuard]},
   {path:":username/newtrip", component:NewtripComponent, canActivate: [AuthGuard]},
   {path:"upload", component: FileUploadComponent, canActivate: [AuthGuard]},
   {path: "search", component:SearchComponent},
-  {path:"**", redirectTo:"/login"}
+  {path: "**", redirectTo: "/login"}
 ];
 
 @NgModule({

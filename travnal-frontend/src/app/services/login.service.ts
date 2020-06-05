@@ -18,7 +18,7 @@ export class LoginService {
     return this.loggedIn.asObservable();
   }
 
-  baseUrl = 'http://localhost:8001/api/';
+  baseUrl = 'api/';
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
   
   constructor(private http: HttpClient) { }
